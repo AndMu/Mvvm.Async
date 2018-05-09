@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>NET462</TargetFramework>
+    <AssemblyName>Wikiled.Disposables.Tests</AssemblyName>
+    <PackageId>Wikiled.Disposables.Tests</PackageId>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <PackageTargetFallback>$(PackageTargetFallback);dnxcore50;portable-net45+win8</PackageTargetFallback>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>full</DebugType>
+    <DebugSymbols>True</DebugSymbols>
+  </PropertyGroup>
+
+  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0" />
+    <PackageReference Include="NUnit" Version="3.10.1" />    
+  </ItemGroup>
+
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Wikiled.Disposables\Wikiled.Disposables.csproj" />
+  </ItemGroup>
+
+</Project>

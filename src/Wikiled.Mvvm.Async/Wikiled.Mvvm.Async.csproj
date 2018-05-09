@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Asynchronous helper types for MVVM applications.</Description>
+    <VersionPrefix>1.0.0</VersionPrefix>    
+    <Authors>Andrius Mudinas</Authors>
+    <TargetFrameworks>netstandard1.0;NET45;NET462</TargetFrameworks>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AssemblyName>Wikiled.Mvvm.Async</AssemblyName>
+    <PackageId>Wikiled.Mvvm.Async</PackageId>
+    <PackageTags>async;mvvm</PackageTags>
+    <PackageProjectUrl>https://github.com/AndMu/Mvvm.Async</PackageProjectUrl>    
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/AndMu/Mvvm.Async</RepositoryUrl>
+    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);IncludeP2PAssets</TargetsForTfmSpecificBuildOutput>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>full</DebugType>
+    <DebugSymbols>True</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Wikiled.Mvvm.Core\Wikiled.Mvvm.Core.csproj" />
+  </ItemGroup>
+
+  <Target Name="IncludeP2PAssets">
+    <ItemGroup>
+      <BuildOutputInPackage Include="$(OutputPath)Wikiled.Mvvm.Core.dll" />      
+      <BuildOutputInPackage Include="$(OutputPath)Wikiled.Disposables.dll" />      
+    </ItemGroup>
+  </Target>
+</Project>
