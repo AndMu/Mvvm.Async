@@ -37,16 +37,8 @@ namespace Wikiled.Mvvm.Core
         /// </summary>
         public event EventHandler CanExecuteChanged
         {
-            add
-            {
-                _threadAffinity.VerifyCurrentThread();
-                _canExecuteChanged.Add(value);
-            }
-            remove
-            {
-                _threadAffinity.VerifyCurrentThread();
-                _canExecuteChanged.Remove(value);
-            }
+            add => _canExecuteChanged.Add(value);
+            remove => _canExecuteChanged.Remove(value);
         }
 
         /// <summary>
@@ -56,7 +48,9 @@ namespace Wikiled.Mvvm.Core
         {
             _threadAffinity.VerifyCurrentThread();
             foreach (var canExecuteChanged in _canExecuteChanged.GetLiveItems())
+            {
                 canExecuteChanged(_sender, EventArgs.Empty);
+            }
         }
     }
 }

@@ -112,7 +112,6 @@ namespace Wikiled.Mvvm.Core
         /// </summary>
         protected override void Dispose(INotifyPropertyChanged context)
         {
-            _threadAffinity.VerifyCurrentThread();
             context.PropertyChanged -= _subscription;
         }
     }

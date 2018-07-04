@@ -37,7 +37,10 @@ namespace Wikiled.Mvvm.Core
             get
             {
                 if (_singletonInstance == null)
+                {
                     _singletonInstance = new PropertyChangedNotificationManager();
+                }
+
                 return _singletonInstance;
             }
         }
@@ -57,12 +60,17 @@ namespace Wikiled.Mvvm.Core
             _threadAffinity.VerifyCurrentThread();
             --_referenceCount;
             if (_referenceCount != 0)
+            {
                 return;
+            }
+
             var properties = new PropertyChangedNotification[_propertiesRequiringNotification.Count];
             _propertiesRequiringNotification.CopyTo(properties);
             _propertiesRequiringNotification.Clear();
             foreach (var property in properties)
+            {
                 property.RaisePropertyChanged.RaisePropertyChanged(property.EventArgs);
+            }
         }
 
         /// <summary>

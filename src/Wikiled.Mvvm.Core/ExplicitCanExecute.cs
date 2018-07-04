@@ -46,7 +46,10 @@ namespace Wikiled.Mvvm.Core
             {
                 _threadAffinity.VerifyCurrentThread();
                 if (_canExecute == value)
+                {
                     return;
+                }
+
                 _canExecute = value;
                 _canExecuteChanged.OnCanExecuteChanged();
             }
@@ -54,16 +57,8 @@ namespace Wikiled.Mvvm.Core
 
         event EventHandler ICanExecute.CanExecuteChanged
         {
-            add
-            {
-                _threadAffinity.VerifyCurrentThread();
-                _canExecuteChanged.CanExecuteChanged += value;
-            }
-            remove
-            {
-                _threadAffinity.VerifyCurrentThread();
-                _canExecuteChanged.CanExecuteChanged -= value;
-            }
+            add => _canExecuteChanged.CanExecuteChanged += value;
+            remove => _canExecuteChanged.CanExecuteChanged -= value;
         }
 
         bool ICanExecute.CanExecute(object parameter)

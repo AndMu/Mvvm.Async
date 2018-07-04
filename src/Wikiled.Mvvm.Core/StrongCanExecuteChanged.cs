@@ -37,16 +37,8 @@ namespace Wikiled.Mvvm.Core
         /// </summary>
         public event EventHandler CanExecuteChanged
         {
-            add
-            {
-                _threadAffinity.VerifyCurrentThread();
-                _canExecuteChanged += value;
-            }
-            remove
-            {
-                _threadAffinity.VerifyCurrentThread();
-                _canExecuteChanged -= value;
-            }
+            add => _canExecuteChanged += value;
+            remove => _canExecuteChanged -= value;
         }
 
         /// <summary>
